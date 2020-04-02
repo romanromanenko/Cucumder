@@ -1,5 +1,4 @@
 package steps;
-
 import io.cucumber.java.en.Then;
 import pages.Metods;
 

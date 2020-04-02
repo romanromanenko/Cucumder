@@ -1,5 +1,4 @@
 package steps;
-
 import io.cucumber.java.Before;
 
 import static com.codeborne.selenide.Selenide.*;
