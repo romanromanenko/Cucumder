@@ -6,8 +6,8 @@ public class BasePageDef {
 
     Metods metods = new Metods();
 
-    @Then("Click {string} button")
-    public void clickButton(String arg0) {
-        metods.login(arg0);
+    @Then("Click login button")
+    public void clickLoginButton() {
+        metods.login();
     }
 }

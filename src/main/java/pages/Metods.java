@@ -1,11 +1,14 @@
 package pages;
 
+import com.codeborne.selenide.*;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Metods {
 
-        public void login (String text){
-            $(By.xpath("//a[@class  = '"+text+"']")).click();
-        }
+    private SelenideElement loginButton = $(By.className("login"));
+
+    public void login (){
+        loginButton.click();
+    }
 }
