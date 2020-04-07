@@ -8,6 +8,11 @@ public class BasePageDef {
 
     @Then("Click login button")
     public void clickLoginButton() {
-        metods.login();
+        metods.openLoginPage();
+    }
+
+    @Then("Input information about new user and create him")
+    public void inputInformationAboutNewUserAndCreateHim() {
+        metods.createNewUser();
     }
 }
