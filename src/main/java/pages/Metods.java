@@ -6,6 +6,9 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Metods {
 
+    String userLogin = "testCuc13@mail.com"; //change email every run when create new user
+    String userPassword = "123test123";
+
     private SelenideElement loginButton = $(By.className("login"));
     private SelenideElement emailFieldFoNewUser = $(By.cssSelector("#email_create"));
     private SelenideElement createNewUserButton = $(By.cssSelector("#SubmitCreate"));
@@ -25,18 +28,21 @@ public class Metods {
     private SelenideElement mobilyPhoneField = $(By.cssSelector("#phone_mobile"));
     private SelenideElement addresField2 = $(By.cssSelector("#alias"));
     private SelenideElement submitButton = $(By.cssSelector("#submitAccount"));
+    private SelenideElement logo = $(By.cssSelector("#header_logo"));
+    private SelenideElement emailFieldSingInForm = $(By.cssSelector("#email"));
+    private SelenideElement passwordFieldSingInForm = $(By.cssSelector("#passwd"));
 
     public void openLoginPage(){
         loginButton.click();
     }
 
     public void createNewUser(){
-        emailFieldFoNewUser.sendKeys("testCuc6@mail.com"); //change email every run
+        emailFieldFoNewUser.sendKeys(userLogin);
         createNewUserButton.click();
         genderButton.click();
         firstNameField.sendKeys("testUser");
         lastNameField.sendKeys("lastName");
-        passwordField.sendKeys("123test123");
+        passwordField.sendKeys(userPassword);
         firstNameField2.sendKeys("firstname");
         lastNameField2.sendKeys("lastname");
         addresField.sendKeys("test addresr");
@@ -49,6 +55,18 @@ public class Metods {
         mobilyPhoneField.sendKeys("375333029610");
         addresField2.sendKeys("addresr2");
         submitButton.click();
+        screenshot("firstscreen");
+    }
 
+    public void openStartPage(){
+        screenshot("userHomePage");
+        logo.click();
+        screenshot("userHomePage");
+    }
+
+    public void login(){
+        loginButton.click();
+        emailFieldSingInForm.sendKeys(userLogin);
+        passwordFieldSingInForm.sendKeys(userPassword + '\n');
     }
 }

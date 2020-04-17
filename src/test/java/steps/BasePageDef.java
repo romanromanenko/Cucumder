@@ -15,4 +15,14 @@ public class BasePageDef {
     public void inputInformationAboutNewUserAndCreateHim() {
         metods.createNewUser();
     }
+
+    @Then("Open start page")
+    public void openStartPage() {
+        metods.openStartPage();
+    }
+
+    @Then("Login user")
+    public void loginUser() {
+        metods.login();
+    }
 }

@@ -9,4 +9,5 @@ public class Hooks {
     public void start(){
         open("http://automationpractice.com/index.php");
     }
+
 }
