@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Metods {
 
-    String userLogin = "testCuc13@mail.com"; //change email every run when create new user
+    String userLogin = "testCuc17@mail.com"; //change email every run when create new user
     String userPassword = "123test123";
 
     private SelenideElement loginButton = $(By.className("login"));
@@ -31,6 +31,14 @@ public class Metods {
     private SelenideElement logo = $(By.cssSelector("#header_logo"));
     private SelenideElement emailFieldSingInForm = $(By.cssSelector("#email"));
     private SelenideElement passwordFieldSingInForm = $(By.cssSelector("#passwd"));
+    private SelenideElement item = $(By.xpath("//img[@alt = 'Blouse']"));
+    private SelenideElement addItemToCartButton = $(By.xpath("//p[@id = 'add_to_cart']"));
+    private SelenideElement quickViewPage = $(By.xpath("//div[@class = 'fancybox-skin']/div/div/iframe"));
+    private SelenideElement crossButton = $(By.cssSelector(".cross"));
+    private SelenideElement shopingCart = $(By.xpath("//div[@class = 'shopping_cart']/a"));
+    private SelenideElement continueButton = $(By.xpath("//span[text() = 'Proceed to checkout']"));
+    private SelenideElement userAgreemenButton = $(By.cssSelector("#cgv"));
+    private SelenideElement payButton = $(By.xpath("//a[@title = 'Pay by check.']"));
 
     public void openLoginPage(){
         loginButton.click();
@@ -55,18 +63,36 @@ public class Metods {
         mobilyPhoneField.sendKeys("375333029610");
         addresField2.sendKeys("addresr2");
         submitButton.click();
-        screenshot("firstscreen");
     }
 
-    public void openStartPage(){
-        screenshot("userHomePage");
-        logo.click();
-        screenshot("userHomePage");
-    }
+    public void openStartPage(){ logo.click(); }
 
     public void login(){
         loginButton.click();
         emailFieldSingInForm.sendKeys(userLogin);
         passwordFieldSingInForm.sendKeys(userPassword + '\n');
+    }
+
+    public void checkInformationAboutItem(){ item.click(); }
+
+    public void addItemToCart(){
+        quickViewPage.waitUntil(Condition.visible, 10000).click();
+        switchTo().frame(quickViewPage);
+        addItemToCartButton.click();
+    }
+
+    public void displayItemInCart(){
+        crossButton.waitUntil(Condition.visible, 10000).click();
+        shopingCart.click();
+    }
+
+    public void buyItemByCheck(){
+        continueButton.click();
+        continueButton.click();
+        userAgreemenButton.click();
+        $(By.name("processCarrier")).click();
+        payButton.click();
+        $(By.xpath("//span[text() = 'I confirm my order']")).click();
+        screenshot("order");
     }
 }
