@@ -1,12 +1,13 @@
 package pages;
 
 import com.codeborne.selenide.*;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Metods {
 
-    String userLogin = "testCuc17@mail.com"; //change email every run when create new user
+    String userLogin = "testCuc20@mail.com"; //change email every run when create new user
     String userPassword = "123test123";
 
     private SelenideElement loginButton = $(By.className("login"));
@@ -65,8 +66,12 @@ public class Metods {
         submitButton.click();
     }
 
+
+    @Step("open start page")
     public void openStartPage(){ logo.click(); }
 
+
+    @Step("login")
     public void login(){
         loginButton.click();
         emailFieldSingInForm.sendKeys(userLogin);
